@@ -102,4 +102,9 @@ def run_ABM(p, n, size, k, omega, b, t, runs):
     ABM_sim_results_returns_array = np.array(ABM_sim_results_returns)
     ABM_sim_results_volume_array = np.array(ABM_sim_results_volume)
     return ABM_sim_results_returns, ABM_sim_results_volume
-        
+
+bin=np.logspace(start=0, stop=np.log(5), num=1000)
+mean_bins, std_bins = get_binheights(ABM_sim_results_returns, bin)
+plt.hist(mean_bins, bin, cumulative=-1, density=True, log = True, histtype='step')
+plt.gca().set_xscale("log")
+plt.show()
